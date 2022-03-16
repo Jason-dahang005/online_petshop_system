@@ -70,7 +70,7 @@
           <div class="row align-items-center">
               <div class="col-lg-3 col-md-3 col-7">
                 <!-- Start Header Logo -->
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ url('/') }}">
                   <img src="{{ asset('/assets/images/logo.png') }}" alt="Logo" >
                 </a>
                 <!-- End Header Logo -->
@@ -126,30 +126,34 @@
                             @endguest
                         " class="main-btn">
                         <i class="lni lni-cart"></i>
-                        <span class="total-items">2</span>
+                        <span class="total-items">{{ Cart::content()->count() }}</span>
                       </a>
                       <!-- Shopping Item -->
                       @auth
                       <div class="shopping-item">
                         <div class="dropdown-cart-header">
-                            <span>2 Items</span>
+                            @if (Cart::content()->count() > 1)
+                                <span>{{ Cart::content()->count() }} Items</span>
+                            @else
+                            <span>{{ Cart::content()->count() }} Item</span>
+                            @endif
                             <a href="{{ url('/cart') }}">View Cart</a>
                         </div>
                         <ul class="shopping-list">
-                            <li>
-                                <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                        class="lni lni-close"></i></a>
-                                <div class="cart-img-head">
-                                    <a class="cart-img" href="product-details.html"><img
-                                            src="assets/images/header/cart-items/item1.jpg" alt="#"></a>
-                                </div>
+                            @foreach (Cart::content() as $item)
+                                <li>
+                                    <a href="javascript:void(0)" class="remove" title="Remove this item"><i class="lni lni-close"></i></a>
+                                    <div class="cart-img-head">
+                                        <a class="cart-img" href="product-details.html"><img src="{{ asset('images') }}/{{ $item->image }}" alt="#"></a>
+                                    </div>
 
-                                <div class="content">
-                                    <h4><a href="product-details.html">Product 1</a></h4>
-                                    <p class="quantity">1x - <span class="amount">₱99.00</span></p>
-                                </div>
-                            </li>
-                            <li>
+                                    <div class="content">
+                                        <h4><a href="product-details.html">{{ $item->name }}</a></h4>
+                                        <p class="quantity">{{ $item->qty }}x - <span class="amount">₱{{ $item->price }}</span></p>
+                                    </div>
+                                </li>
+                            @endforeach
+                            {{-- <li>
                                 <a href="javascript:void(0)" class="remove" title="Remove this item"><i
                                         class="lni lni-close"></i></a>
                                 <div class="cart-img-head">
@@ -159,12 +163,12 @@
                                     <h4><a href="product-details.html">Product 2</a></h4>
                                     <p class="quantity">1x - <span class="amount">₱35.00</span></p>
                                 </div>
-                            </li>
+                            </li> --}}
                         </ul>
                         <div class="bottom">
                             <div class="total">
                                 <span>Total</span>
-                                <span class="total-amount">₱134.00</span>
+                                <span class="total-amount">₱{{ Cart::subtotal() }}</span>
                             </div>
                             <div class="button">
                                 <a href="{{ url('/checkout') }}" class="btn animate">Checkout</a>
@@ -196,6 +200,7 @@
                             <li><a href="">Orders</a></li>
                             <li><a href="">Wishlist</a></li>
                             <li><a href="">Followed Stores</a></li>
+                            {{-- <li><a href="{{ route('logout') }}">Logout</a></li> --}}
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >Logout</a></li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                               @csrf

@@ -15,11 +15,13 @@
 											</div>
 											<div class="form-group input-group">
 													<label for="reg-fn">Email</label>
-													<input class="form-control" type="email" id="reg-email" name="email" required>
+													<input class="form-control" type="email" id="" name="email" >
+													@error('email')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
 											</div>
 											<div class="form-group input-group">
 													<label for="reg-fn">Password</label>
-													<input class="form-control" type="password" id="reg-pass" name="password" required>
+													<input class="form-control" type="password" id="" name="password" >
+													@error('password')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
 											</div>
 											<div class="d-flex flex-wrap justify-content-between bottom-content">
 													<div class="form-check">

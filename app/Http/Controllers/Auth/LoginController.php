@@ -49,10 +49,14 @@ class LoginController extends Controller
         
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->user_type == 1) {
+               $request->session()->put('adminId', $input['email']);
                 return redirect()->route('admin.dashboard');
+
             }elseif (auth()->user()->user_type == 2) {
+               $request->session()->put('deliveryId', $input['email']);
                 return redirect()->route('delivery.dashboard');
             } else {
+               $request->session()->put('userId', $input['email']);
                 return redirect('/');
             }
         } else {
@@ -60,5 +64,4 @@ class LoginController extends Controller
         }
         
     }
-
 }

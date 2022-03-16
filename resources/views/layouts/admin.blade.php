@@ -115,7 +115,7 @@
     $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": true, "autoWidth": true, "searching": true, "ordering": true, "info": true, "paging": true,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+      /*"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]*/
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
       "paging": true,
@@ -127,6 +127,19 @@
       "responsive": true,
     });
   });
+  </script>
+
+  <script>
+    function previewFile(input){
+      var files = $("input[type=file]").get(0).files[0];
+      if (file) {
+        car reader = new FileReader();
+        reader.onload = function(){
+          $('#previewImg').attr("src", reader.result);
+        }
+        reader.readAsDataURL(file);
+      }
+    }
   </script>
 </body>
 </html>

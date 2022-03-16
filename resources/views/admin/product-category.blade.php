@@ -15,7 +15,7 @@
 <div class="card">
   <div class="card-header">
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProdCatModal">Add new category</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProdCatModal"><i class="fas fa-plus-circle"></i> Add new category</button>
     </div>
   </div>
   <div class="card-body">
@@ -25,7 +25,7 @@
           <th width="20%">Name</th>
           <th>Description</th>
           <th width="15%">Date added</th>
-          <td width="10%">Status</td>
+          <th width="10%">Status</th>
           <th width="11%">Action</th>
         </tr>
       </thead>
@@ -39,7 +39,7 @@
               @if ($pc->status == 1)
                 <span class="badge badge-success">Active</span>
               @else
-              <span class="badge badge-danger">Inactive</span>
+                <span class="badge badge-danger">Inactive</span>
               @endif
 
             </td>
@@ -68,12 +68,13 @@
           @csrf
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Enter category name here...">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter product category name here...">
           </div>
     
           <div class="form-group">
             <label for="">Description</label>
-            <input type="text" class="form-control" name="description" id="description" placeholder="Enter category description here...">
+            <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="Enter product category description here..."></textarea>
+            {{-- <input type="text" class="form-control" name="description" id="description" placeholder="Enter category description here..."> --}}
           </div>
 
           <div class="form-group">
@@ -90,6 +91,8 @@
   </div>
 </div>
 
+
+
 @foreach ($prod_cat as $pc)
 <div class="modal fade" id="EditProdCatModal{{ $pc->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="EditProdCatModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -101,18 +104,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{ url('admin/product-category/{product_category}') }}" method="post">
-          @csrf
-          @method('PUT')
+        <form action="{{ route('product-category.update', $pc->id) }}" method="post">
+          {{ method_field('patch') }}
+          {{ csrf_field() }}
           <input type="hidden" name="id" value="{{ $pc->id }}">
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Enter category name here..." value="{{ $pc->name }}">
+            <input type="text" class="form-control" name="name" id="name" placeholder="Enter product category name here..." value="{{ $pc->name }}">
           </div>
     
           <div class="form-group">
             <label for="">Description</label>
-            <input type="text" class="form-control" name="description" id="description" placeholder="Enter category description here..." value="{{ $pc->description }}">
+            <textarea class="form-control" name="description" id="" cols="100" rows="5" placeholder="Enter product category description here...">{{ $pc->description }}</textarea>
+            {{-- <input type="text" class="form-control" name="description" id="description" placeholder="Enter category description here..." value="{{ $pc->description }}"> --}}
           </div>
 
           <div class="form-group">
@@ -137,7 +141,5 @@
   </div>
 </div>
 @endforeach
-
-{{ dd($prod_cat) }}
 
 @endsection

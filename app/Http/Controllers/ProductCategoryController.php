@@ -36,10 +36,9 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $prod_cat = new ProductCategory;
-        $prod_cat->name = $request->name;
-        $prod_cat->description = $request->description;
-        $pc = $prod_cat->save();
+        $pc = ProductCategory::create(
+            $request->all()
+        );
 
         if ($pc) {
             return back()->with('success', 'Category added successfully');
@@ -78,11 +77,20 @@ class ProductCategoryController extends Controller
      * @param  \App\Models\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory, $id)
+    public function update(Request $request, $id)
     {
         $prod_cat = ProductCategory::find($id);
+        $prod_cat->id = $request->id;
+        $prod_cat->name = $request->name;
+        $prod_cat->description = $request->description;
+        $prod_cat->status = $request->status; 
         $pc = $prod_cat->update();
-        return redirect()->route('admin.product-category');
+
+        if ($pc) {
+            return back()->with('success', 'Category updated successfully');
+        }else {
+            return back()->with('error', 'Something went wrong');
+        }
 
     }
 

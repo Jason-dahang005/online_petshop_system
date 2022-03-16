@@ -3,6 +3,10 @@
 @section('user_content')
 
 <!-- Start Product Grids -->
+
+@if (Session::has('userId'))
+    {{ Session::get('userId') }}
+@endif
 <section class="product-grids section">
     <div class="container">
         <div class="row">
@@ -20,9 +24,16 @@
                     <!-- End Single Widget -->
                     <!-- Start Single Widget -->
                     <div class="single-widget">
-                        <h3>All Categories</h3>
+                        <h3>Product Categories</h3>
                         <ul class="list">
-                            <li>
+                            @foreach ($prod_cat as $pc)
+                                @if ($pc->status)
+                                    <li>
+                                        <a href="#">{{ $pc->name }}</a><span></span>
+                                    </li>
+                                @endif
+                            @endforeach
+                            {{-- <li>
                                 <a href="product-grids.html">Aquariums</a><span>(1138)</span>
                             </li>
                             <li>
@@ -33,7 +44,7 @@
                             </li>
                             <li>
                                 <a href="product-grids.html">Fish Foods</a><span>(874)</span>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a href="product-grids.html">Headphones</a><span>(1239)</span>
                             </li>
@@ -46,6 +57,18 @@
                         </ul>
                     </div>
                     <!-- End Single Widget -->
+                    <div class="single-widget">
+                        <h3>Pet Categories</h3>
+                        <ul class="list">
+                            @foreach ($pet_cat as $p)
+                                @if ($p->status)
+                                    <li>
+                                        <a href="#">{{ $p->name }}</a><span></span>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
                     <!-- Start Single Widget -->
                     {{-- <div class="single-widget range">
                         <h3>Price Range</h3>
@@ -180,283 +203,40 @@
                         <div class="tab-pane fade show active" id="nav-grid" role="tabpanel"
                             aria-labelledby="nav-grid-tab">
                             <div class="row">
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
+                                @foreach ($prod as $p)
+                                    @if ($p->status)
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <!-- Start Single Product -->
+                                            <div class="single-product">
+                                                <div class="product-image">
+                                                    <img src="{{ asset('images') }}/{{ $p->image }}" alt="#">
+                                                    <div class="button">
+                                                        <a href="{{ url('product-view/'.$p->id) }}" class="btn"><i class="lni lni-eye"></i> View</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info">
+                                                    {{-- <span class="category">Watches</span> --}}
+                                                    <h4 class="title">
+                                                        <a href="product-grids.html">{{ $p->name }}</a>
+                                                    </h4>
+                                                    <ul class="review">
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star"></i></li>
+                                                        <li><span>4.0 Review(s)</span></li>
+                                                    </ul>
+                                                    <div class="price">
+                                                        <span>₱{{ $p->price }}.00</span>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <!-- End Single Product -->
                                         </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Watches</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 1</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star"></i></li>
-                                                <li><span>4.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱199.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            {{-- <span class="sale-tag">-25%</span> --}}
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Speaker</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 2</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱275.00</span>
-                                                <span class="discount-price">₱300.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Camera</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 3</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱399.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <span class="new-tag">New</span>
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Phones</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 4</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱400.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Headphones</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 5</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱350.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Speaker</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 6</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star"></i></li>
-                                                <li><span>4.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱70.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            {{-- <span class="sale-tag">-50%</span> --}}
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Headphones</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 7</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star"></i></li>
-                                                <li><span>4.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱100.00</span>
-                                                <span class="discount-price">₱200.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Laptop</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 8</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱899.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="https://via.placeholder.com/335x335" alt="#">
-                                            {{-- <span class="sale-tag">-25%</span> --}}
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i
-                                                        class="lni lni-cart"></i> Add to Cart</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            {{-- <span class="category">Speaker</span> --}}
-                                            <h4 class="title">
-                                                <a href="product-grids.html">Product 9</a>
-                                            </h4>
-                                            <ul class="review">
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><i class="lni lni-star-filled"></i></li>
-                                                <li><span>5.0 Review(s)</span></li>
-                                            </ul>
-                                            <div class="price">
-                                                <span>₱275.00</span>
-                                                <span class="discount-price">₱300.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
+                                    @endif
+                                @endforeach
+                                
                             </div>
                             <div class="row">
                                 <div class="col-12">

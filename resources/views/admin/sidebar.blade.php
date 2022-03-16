@@ -48,15 +48,27 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{ url('/admin/product-category') }}" class="nav-link {{ 'admin/product-category' == request()->path() ? 'active' : '' }}">
+              <i class="nav-icon fas fa-boxes"></i>
+              <p>Product Categories</p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ url('/admin/products') }}" class="nav-link {{ 'admin/products' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-bag"></i>
               <p>Products</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/admin/product-category') }}" class="nav-link {{ 'admin/product-category' == request()->path() ? 'active' : '' }}">
+            <a href="{{ url('/admin/pet-category') }}" class="nav-link {{ 'admin/pet-category' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-sitemap"></i>
-              <p>Categories</p>
+              <p>Pet Categories</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-fish"></i>
+              <p>Pets</p>
             </a>
           </li>
           <li class="nav-item">
