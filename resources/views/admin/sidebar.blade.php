@@ -42,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/admin/users') }}" class="nav-link {{ 'admin/users' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>Users</p>
             </a>

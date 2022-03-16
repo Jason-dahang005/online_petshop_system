@@ -11,6 +11,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PetCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -46,6 +47,8 @@ Route::middleware(['is_admin'])->group(function () {
   Route::resource('/admin/product-category', ProductCategoryController::class);
   Route::resource('/admin/pet-category', PetCategoryController::class);
   Route::resource('/admin/products', ProductController::class);
+  Route::resource('/admin/users', UserController::class);
+
 });
 
 
