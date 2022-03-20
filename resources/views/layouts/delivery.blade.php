@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Admin | @yield('title')</title>
+  <title>Delivery | @yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -39,17 +39,17 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 
   <div class="wrapper">
-    @include('admin/topbar')
+    @include('delivery/topbar')
     @include('delivery/sidebar')
 
     <div class="content-wrapper">
       <section class="content">
         <div class="container-fluid pt-3">
-          @yield('admin_content')
+          @yield('delivery_content')
         </div>
       </section>
     </div>
-    @include('admin/footer')
+    @include('delivery/footer')
   </div>
 
 

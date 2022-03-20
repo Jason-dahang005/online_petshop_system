@@ -1,6 +1,6 @@
 @extends('layouts.delivery')
 @section('title', 'Dashboard')
-@section('admin_content')
+@section('delivery_content')
 
 <!-- Small boxes (Stat box) -->
 <div class="row">

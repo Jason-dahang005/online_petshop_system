@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -14,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users');
+        $users = User::all();
+        return view('admin.users', compact('users'));
 
     }
 
@@ -36,7 +38,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -45,9 +47,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $users)
     {
-        //
+        
     }
 
     /**
@@ -58,7 +60,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -70,7 +72,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->id = $request->id;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->user_type = $request->user_type; 
+        $us = $user->update();
+
+        if ($us) {
+            return back()->with('success', 'Category updated successfully');
+        }else {
+            return back()->with('error', 'Something went wrong');
+        }
     }
 
     /**

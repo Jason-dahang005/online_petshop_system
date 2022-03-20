@@ -61,16 +61,11 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/admin/pet-category') }}" class="nav-link {{ 'admin/pet-category' == request()->path() ? 'active' : '' }}">
-              <i class="nav-icon fas fa-sitemap"></i>
-              <p>Pet Categories</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-fish"></i>
-              <p>Pets</p>
+              <p>Goldfish Categories</p>
             </a>
           </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-clipboard"></i>

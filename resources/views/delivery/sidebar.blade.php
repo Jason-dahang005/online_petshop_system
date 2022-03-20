@@ -36,7 +36,7 @@
           <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('/admin/dashboard') }}" class="nav-link {{ 'admin/dashboard' == request()->path() ? 'active' : '' }}">
+            <a href="{{ url('/delivery/dashboard') }}" class="nav-link {{ 'delivery/dashboard' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -44,11 +44,17 @@
           <li class="nav-item">
             <a href="{{ url('/admin/users') }}" class="nav-link {{ 'admin/users' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
+              <p>Pofile</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/delivery/ToDel') }}" class="nav-link {{ 'delivery/ToDel' == request()->path() ? 'active' : '' }}">
+              <i class="nav-icon fas fa-users"></i>
               <p>To Deliver Orders</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('/admin/product-category') }}" class="nav-link {{ 'admin/product-category' == request()->path() ? 'active' : '' }}">
+            <a href="{{ url('/delivery/deliveredOrders') }}" class="nav-link {{ 'delivery/deliveredOrders' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-boxes"></i>
               <p>Deliverd Orders</p>
             </a>

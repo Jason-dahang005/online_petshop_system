@@ -12,7 +12,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PetCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,5 +50,9 @@ Route::middleware(['is_admin'])->group(function () {
   Route::resource('/admin/users', UserController::class);
 
 });
+// Delvery
+Route::resource('/delivery/ToDel', DeliveryController::class);
+Route::resource('/delivery/deliveredOrders', DeliveryController::class);
+
 
 
