@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\PetCategory;
+use App\Models\Goldfish;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class GoldfishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $users = User::all()->where('user_type', 0);
-        return view('admin.users', compact('users'));;
-
+        $pet_cat = PetCategory::all();
+        $goldF = Goldfish::all();
+        return view('admin.goldfish', compact('pet_cat', 'goldF'));
+    
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -39,7 +40,27 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'petCat_id' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $input = $request->all();
+  
+        if ($image = $request->file('image')) {
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move(public_path('images'), $profileImage);
+            $input['image'] = "$profileImage";
+        }
+    
+       Goldfish::create($input);
+     
+        return back()->with('success','Goldfish added successfully.');
+    
     }
 
     /**
@@ -48,9 +69,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(User $users)
+    public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -73,15 +94,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->id = $request->id;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->user_type = $request->user_type; 
-        $us = $user->update();
+        $goldF = Goldfish::find($id);
+        $goldF->id = $request->id;
+        $goldF->name = $request->name;
+        $goldF->description = $request->description;
+        $goldF->status = $request->status; 
+        $pc = $goldF->update();
 
-        if ($us) {
-            return back()->with('success', 'Category updated successfully');
+        if ($pc) {
+            return back()->with('success', 'Updated successfully');
         }else {
             return back()->with('error', 'Something went wrong');
         }

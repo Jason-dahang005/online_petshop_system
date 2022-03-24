@@ -62,23 +62,23 @@
           <li class="nav-item">
             <a href="{{ url('/admin/pet-category') }}" class="nav-link {{ 'admin/pet-category' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-sitemap"></i>
-              <p>Pet Categories</p>
+              <p>Goldfish Categories</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/admin/goldfish') }}" class="nav-link {{ 'admin/goldfish' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-fish"></i>
-              <p>Pets</p>
+              <p>Goldfish</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/admin/reservation') }}" class="nav-link {{ 'admin/reservation' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>Reservations</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/admin/order') }}" class="nav-link {{ 'admin/order' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>Orders</p>
             </a>

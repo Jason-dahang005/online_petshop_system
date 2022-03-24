@@ -12,6 +12,9 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PetCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoldfishController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReservationController;
 
 
 /*
@@ -48,6 +51,9 @@ Route::middleware(['is_admin'])->group(function () {
   Route::resource('/admin/pet-category', PetCategoryController::class);
   Route::resource('/admin/products', ProductController::class);
   Route::resource('/admin/users', UserController::class);
+  Route::resource('/admin/goldfish', GoldfishController::class);
+  Route::resource('/admin/order', OrderController::class);
+  Route::resource('/admin/reservation', ReservationController::class);
 
 });
 
