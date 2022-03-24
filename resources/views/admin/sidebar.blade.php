@@ -41,24 +41,35 @@
               <p>Dashboard</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ url('/admin/users') }}" class="nav-link {{ 'admin/users' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>Users</p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-biking"></i>
+              <p>Delivery</p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="{{ url('/admin/product-category') }}" class="nav-link {{ 'admin/product-category' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-boxes"></i>
               <p>Product Categories</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ url('/admin/products') }}" class="nav-link {{ 'admin/products' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-bag"></i>
               <p>Products</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ url('/admin/pet-category') }}" class="nav-link {{ 'admin/pet-category' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-fish"></i>
@@ -72,24 +83,28 @@
               <p>Reservations</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>Orders</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-money-bill"></i>
               <p>Sales</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-box"></i>
               <p>Inventory</p>
             </a>
           </li>
+
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               <i class="nav-icon fas fa-sign-out-alt"></i>

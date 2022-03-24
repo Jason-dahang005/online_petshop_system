@@ -15,7 +15,7 @@
 <div class="card">
   <div class="card-header">
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ProdCatModal"><i class="fas fa-plus-circle"></i> Add new category</button>
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ProdCatModal"><i class="fas fa-plus-circle"></i> Add new category</button>
     </div>
   </div>
   <div class="card-body">
@@ -26,7 +26,7 @@
           <th>Description</th>
           <th width="15%">Date added</th>
           <th width="10%">Status</th>
-          <th width="11%">Action</th>
+          <th width="15%">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -44,8 +44,8 @@
 
             </td>
             <td>
-              <a href="#" class="btn btn-sm btn-success"><i class="fas fa-eye"></i> View</a>
-              <a href="#" class="btn btn-sm bg-navy" data-toggle="modal" data-target="#EditProdCatModal{{ $pc->id }}"><i class="fas fa-edit"></i> Edit</a>
+              <a href="#" class="btn btn-xs btn-success"><i class="fas fa-eye"></i> View</a>
+              <a href="#" class="btn btn-xs bg-navy" data-toggle="modal" data-target="#EditProdCatModal{{ $pc->id }}"><i class="fas fa-edit"></i> Edit</a>
             </td>
           </tr>
         @endforeach
