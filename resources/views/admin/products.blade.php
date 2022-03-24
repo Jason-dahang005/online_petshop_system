@@ -5,7 +5,7 @@
 <div class="card">
   <div class="card-header">
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-plus-circle"></i> Add new product</button>
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#staticBackdrop"><i class="fas fa-plus-circle"></i> Add new product</button>
     </div>
   </div>
   <div class="card-body">
@@ -80,7 +80,9 @@
             <select class="custom-select" name="prodCat_id">
               <option selected>Select Category</option>
               @foreach ($prod_cat as $pc)
-              <option value="{{ $pc->id }}">{{ $pc->name }}</option>
+                @if ($pc->status)
+                  <option value="{{ $pc->id }}">{{ $pc->name }}</option>
+                @endif
               @endforeach
             </select>
           </div>

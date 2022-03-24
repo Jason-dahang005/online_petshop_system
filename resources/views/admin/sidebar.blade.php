@@ -78,7 +78,7 @@
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/admin/reservations') }}" class="nav-link {{ 'admin/reservations' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>Reservations</p>
             </a>

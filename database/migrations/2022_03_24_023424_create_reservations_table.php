@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetCategoriesTable extends Migration
+class CreateReservationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreatePetCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pet_categories', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->text('description');
-            $table->boolean('status')->default(0)->comment('1=active, 0=inactive');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreatePetCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pet_categories');
+        Schema::dropIfExists('reservations');
     }
 }

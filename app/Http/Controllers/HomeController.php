@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
+
 class HomeController extends Controller
 {
     /**
@@ -31,7 +33,8 @@ class HomeController extends Controller
     }
 
     public function admin_index(){
-        return view('admin.dashboard');
+        $users = User::all()->where('user_type', 0);
+        return view('admin.dashboard', compact('users'));
     }
 
     public function delivery_dashboard(){

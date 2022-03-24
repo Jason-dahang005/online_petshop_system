@@ -38,9 +38,8 @@
     <!-- small box -->
     <div class="small-box bg-warning">
       <div class="inner">
-        <h3>44</h3>
-
-        <p>User Registrations</p>
+        <h3>{{ count($users) }}</h3>
+        <p>Registered Users</p>
       </div>
       <div class="icon">
         <i class="ion ion-person-add"></i>

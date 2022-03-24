@@ -36,6 +36,11 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|unique:product_categories',
+            'description' => 'required',
+        ]);
+        
         $pc = ProductCategory::create(
             $request->all()
         );
@@ -79,6 +84,11 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required|unique:product_categories',
+            'description' => 'required',
+        ]);
+        
         $prod_cat = ProductCategory::find($id);
         $prod_cat->id = $request->id;
         $prod_cat->name = $request->name;

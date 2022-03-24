@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\ProductViewController;
+//use App\Http\Controllers\ProductViewController;
 use App\Http\Controllers\CartController;
 
 // ADMIN CONTROLLER
@@ -13,6 +14,8 @@ use App\Http\Controllers\PetCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeliveryController;
+use App\Http\Controllers\ReservationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -45,9 +48,11 @@ Route::get('/delivery/dashboard', [HomeController::class, 'delivery_dashboard'])
 Route::middleware(['is_admin'])->group(function () {
   Route::get('/admin/dashboard', [HomeController::class, 'admin_index'])->name('admin.dashboard');
   Route::resource('/admin/product-category', ProductCategoryController::class);
+  Route::resource('/admin/add-product-category', ProductCategoryController::class);
   Route::resource('/admin/pet-category', PetCategoryController::class);
   Route::resource('/admin/products', ProductController::class);
   Route::resource('/admin/users', UserController::class);
+  Route::resource('/admin/reservations', ReservationController::class);
 
 });
 // Delvery

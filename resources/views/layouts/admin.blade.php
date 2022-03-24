@@ -109,7 +109,23 @@
     <script>
       toastr.success("{!! Session::get('success') !!}");
     </script>
+  @endif 
+
+  {{-- @if (count($errors) > 0)
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#ProdCatModal').modal('show');
+      });
+    </script>
   @endif
+
+  @if (count($errors) > 0)
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $('#EditProdCatModal').modal('show');
+      });
+    </script>
+  @endif --}}
 
   <script>
     $(function () {

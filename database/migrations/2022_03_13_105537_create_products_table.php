@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('prodCat_id');
             $table->foreign('prodCat_id')->references('id')->on('product_categories')->onDelete('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->text('description');
             $table->float('price');
             $table->integer('stock');

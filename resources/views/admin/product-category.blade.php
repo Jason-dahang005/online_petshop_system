@@ -15,7 +15,7 @@
 <div class="card">
   <div class="card-header">
     <div class="d-flex justify-content-end">
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ProdCatModal"><i class="fas fa-plus-circle"></i> Add new category</button>
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#ProdCatModal"><i class="fas fa-plus-circle"></i> Add new category</button>
     </div>
   </div>
   <div class="card-body">
@@ -68,13 +68,15 @@
           @csrf
           <div class="form-group">
             <label for="">Name</label>
-            <input type="text" class="form-control" name="name" id="name" placeholder="Enter product category name here...">
+            <input type="text" class="form-control" required name="name" id="name" placeholder="Enter product category name here...">
+            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
           </div>
     
           <div class="form-group">
             <label for="">Description</label>
-            <textarea class="form-control" name="description" id="" cols="30" rows="5" placeholder="Enter product category description here..."></textarea>
+            <textarea class="form-control" name="description" required id="" cols="30" rows="5" placeholder="Enter product category description here..."></textarea>
             {{-- <input type="text" class="form-control" name="description" id="description" placeholder="Enter category description here..."> --}}
+            @error('description') <span class="text-danger">{{ $message }}</span> @enderror
           </div>
 
           <div class="form-group">
@@ -94,7 +96,7 @@
 
 
 @foreach ($prod_cat as $pc)
-<div class="modal fade" id="EditProdCatModal{{ $pc->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="EditProdCatModalLabel" aria-hidden="true">
+<div class="modal fade EditProdCatModal" id="EditProdCatModal{{ $pc->id }}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="EditProdCatModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,6 +113,7 @@
           <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Enter product category name here..." value="{{ $pc->name }}">
+            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
           </div>
     
           <div class="form-group">
