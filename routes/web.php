@@ -13,11 +13,8 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\PetCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\ReservationController;
-=======
->>>>>>> Stashed changes
 
 
 /*
@@ -55,10 +52,7 @@ Route::middleware(['is_admin'])->group(function () {
   Route::resource('/admin/pet-category', PetCategoryController::class);
   Route::resource('/admin/products', ProductController::class);
   Route::resource('/admin/users', UserController::class);
-<<<<<<< Updated upstream
   Route::resource('/admin/reservations', ReservationController::class);
-=======
->>>>>>> Stashed changes
 
 });
 // Delvery

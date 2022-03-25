@@ -72,28 +72,13 @@
 
           <li class="nav-item">
             <a href="{{ url('/admin/pet-category') }}" class="nav-link {{ 'admin/pet-category' == request()->path() ? 'active' : '' }}">
-<<<<<<< Updated upstream
               <i class="nav-icon fas fa-fish"></i>
               <p>Goldfish Categories</p>
-=======
-              <i class="nav-icon fas fa-sitemap"></i>
-              <p>Pet Categories</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-fish"></i>
-              <p>Pets</p>
->>>>>>> Stashed changes
             </a>
           </li>
           
           <li class="nav-item">
-<<<<<<< Updated upstream
             <a href="{{ url('/admin/reservations') }}" class="nav-link {{ 'admin/reservations' == request()->path() ? 'active' : '' }}">
-=======
-            <a href="#" class="nav-link">
->>>>>>> Stashed changes
               <i class="nav-icon fas fa-clipboard"></i>
               <p>Reservations</p>
             </a>
