@@ -76,16 +76,21 @@
               <p>Goldfish Categories</p>
             </a>
           </li>
+          <li class="nav-item">
+          <a href="{{ url('/admin/goldfish') }}" class="nav-link {{ 'admin/goldfish' == request()->path() ? 'active' : '' }}">
+              <i class="nav-icon fas fa-fish"></i>
+              <p>Goldfish</p>
+            </a>
+          </li>
           
           <li class="nav-item">
-            <a href="{{ url('/admin/reservations') }}" class="nav-link {{ 'admin/reservations' == request()->path() ? 'active' : '' }}">
+          <a href="{{ url('/admin/reservations') }}" class="nav-link {{ 'admin/reservations' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-clipboard"></i>
               <p>Reservations</p>
             </a>
           </li>
-
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/admin/orders') }}" class="nav-link {{ 'admin/orders' == request()->path() ? 'active' : '' }}">
               <i class="nav-icon fas fa-shopping-cart"></i>
               <p>Orders</p>
             </a>
