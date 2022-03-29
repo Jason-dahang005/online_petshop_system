@@ -28,7 +28,7 @@
             <td>Venz Carna</td>
             <td>user@user.com</td>
             <td>
-                <span class ="badge badge-danger">Pending</span>
+            <span class ="badge badge-info"style="padding-top: 0.6em !important; color: white !important; background-color: #17a2b8!important;">Accepted</span>
             </td>
             <td>03/24/2022</td>
             <td>

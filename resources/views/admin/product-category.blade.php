@@ -113,7 +113,7 @@
           <div class="form-group">
             <label for="">Name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Enter product category name here..." value="{{ $pc->name }}">
-            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
+            
           </div>
     
           <div class="form-group">

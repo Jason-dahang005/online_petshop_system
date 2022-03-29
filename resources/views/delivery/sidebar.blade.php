@@ -49,7 +49,7 @@
           </li>
           <li class="nav-item">
             <a href="{{ url('/delivery/ToDel') }}" class="nav-link {{ 'delivery/ToDel' == request()->path() ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-shipping-fast"></i>
               <p>To Deliver Orders</p>
             </a>
           </li>

@@ -50,7 +50,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="{{ url('/admin/delivery') }}" class="nav-link {{ 'admin/delivery' == request()->path() ? 'active' : '' }}">
             <i class="nav-icon fas fa-biking"></i>
               <p>Delivery</p>
             </a>

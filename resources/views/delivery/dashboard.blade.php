@@ -13,7 +13,7 @@
         <p>To Ship Orders</p>
       </div>
       <div class="icon">
-        <i class="ion ion-bag"></i>
+        <i class="ion ion-android-bicycle"></i>
       </div>
       <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
@@ -28,7 +28,7 @@
         <p>Shipped Orders</p>
       </div>
       <div class="icon">
-        <i class="ion ion-stats-bars"></i>
+        <i class="ion ion-checkmark-round"></i>
       </div>
       <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>

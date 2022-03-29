@@ -97,7 +97,7 @@ class ProductCategoryController extends Controller
         $pc = $prod_cat->update();
 
         if ($pc) {
-            return back()->with('success', 'Category updated successfully');
+            return back()->with('success', 'Updated successfully');
         }else {
             return back()->with('error', 'Something went wrong');
         }

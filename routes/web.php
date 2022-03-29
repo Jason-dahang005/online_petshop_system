@@ -15,7 +15,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GoldfishController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ReservationController;
-
+use App\Http\Controllers\DeliveryPageController;
+use App\Http\Controllers\DeliveryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::post('/cart', [CartController::class, 'delete'])->name('cart.delete');
 Route::resource('/', IndexController::class);
 
 Route::get('/delivery/dashboard', [HomeController::class, 'delivery_dashboard'])->name('delivery.dashboard');
+Route::resource('/delivery/ToDel', DeliveryController::class);
+Route::get('/delivery/deliveredOrders', [DeliveryController::class , 'deliveredOrders_index'])->name('delivery.deliveredOrders');
 
 Route::middleware(['is_admin'])->group(function () {
   Route::get('/admin/dashboard', [HomeController::class, 'admin_index'])->name('admin.dashboard');
@@ -54,6 +57,7 @@ Route::middleware(['is_admin'])->group(function () {
   Route::resource('/admin/goldfish', GoldfishController::class);
   Route::resource('/admin/orders', OrderController::class);
   Route::resource('/admin/reservations', ReservationController::class);
+  Route::resource('/admin/delivery', DeliveryPageController::class);
 
 });
 
